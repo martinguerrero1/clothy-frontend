@@ -35,7 +35,6 @@ export default async function loginAction(
     const response = await loginUser({
       email,
       password,
-      rememberMe,
     });
 
     return {

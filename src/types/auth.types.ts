@@ -45,7 +45,6 @@ export type RegisterData = {
 export type LoginData = {
   email: string;
   password: string;
-  rememberMe: boolean;
 };
 
 //DATOS QUE RECIBO DEL BACKEND
@@ -55,13 +54,12 @@ export type UserResponse = {
   lastname: string;
   username: string;
   email: string;
-  role: 'usuario' | 'vendedor' | 'admin';
+  role: 'cliente' | 'vendedor' | 'admin';
 };
 
 export type RegisterResponse = {
   message: string;
   user: UserResponse;
-  token: string;
 };
 
 export type LoginResponse = {
