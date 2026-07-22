@@ -37,6 +37,8 @@ export default async function loginAction(
       password,
     });
 
+    localStorage.setItem('token', response.token);
+
     return {
       success: true,
       message: response.message,

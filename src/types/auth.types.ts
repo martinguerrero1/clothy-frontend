@@ -49,9 +49,9 @@ export type LoginData = {
 
 //DATOS QUE RECIBO DEL BACKEND
 export type UserResponse = {
-  id: number;
+  id: string;
   name: string;
-  lastname: string;
+  lastName: string;
   username: string;
   email: string;
   role: 'cliente' | 'vendedor' | 'admin';
@@ -66,4 +66,9 @@ export type LoginResponse = {
   message: string;
   user: UserResponse;
   token: string;
+};
+
+export type ProfileResponse = {
+  message: string;
+  user: UserResponse;
 };

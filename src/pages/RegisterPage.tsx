@@ -1,7 +1,7 @@
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
 import portada from '../assets/images/portada.png';
 import type { RegisterFormState } from '../types/auth.types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import registerAction from '../actions/register.action';
 export default function RegisterPage() {
   const INITIAL_AUTH_STATE: RegisterFormState = {
@@ -12,19 +12,26 @@ export default function RegisterPage() {
 
   const [state, formAction, isPending] = useActionState(registerAction, INITIAL_AUTH_STATE);
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (state.success) {
+      navigate('/login');
+    }
+  }, [state.success, navigate]);
+
   return (
     <main className="min-h-screen  bg-background text-text-primary">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1440px]">
+      <div className="mx-auto flex min-h-screen w-full max-w-360">
         {/* Lateral visual */}
         <section className="relative hidden min-h-screen w-[52%] overflow-hidden bg-secondary lg:block">
           <img src={portada} alt="Portada" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/10" />
+          <div className="absolute inset-0 bg-linear-to-b from-black/15 via-transparent to-black/10" />
         </section>
 
         {/* Contenido */}
-        <section className="flex min-h-screen  flex-col px-5 py-8">
+        <section className="flex min-h-screen flex-1 flex-col px-5 py-8">
           <div className="flex flex-1 items-center justify-center">
-            <div className="w-full max-w-[500px] rounded-2xl border border-border-soft bg-surface px-6 py-10 shadow-card sm:px-10 lg:px-14 lg:py-12">
+            <div className="w-full max-w-125 rounded-2xl border border-border-soft bg-surface px-6 py-10 shadow-card sm:px-10 lg:px-14 lg:py-12">
               <header className="mb-9">
                 <p className="mb-3 text-sm font-medium tracking-[0.08em] uppercase text-primary">
                   Clothy
@@ -220,7 +227,7 @@ export default function RegisterPage() {
               <div className="my-9 h-px bg-border-soft" />
 
               <p className="text-center text-sm text-text-secondary">
-                <p>¿Ya tienes una cuenta?</p>
+                ¿Ya tienes una cuenta?
                 <Link
                   to="/login"
                   className="font-semibold text-primary transition hover:text-primary-hover hover:underline"
