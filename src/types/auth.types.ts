@@ -1,3 +1,13 @@
+//USUARIO
+export type User = {
+  id: string;
+  name: string;
+  lastName: string;
+  username: string;
+  email: string;
+  role: 'cliente' | 'vendedor' | 'admin';
+};
+
 //DATOS DEL FORMULARIO
 export type RegisterFormState = {
   success: boolean;
@@ -48,22 +58,29 @@ export type LoginData = {
 };
 
 //DATOS QUE RECIBO DEL BACKEND
-export type UserResponse = {
-  id: number;
-  name: string;
-  lastname: string;
-  username: string;
-  email: string;
-  role: 'cliente' | 'vendedor' | 'admin';
-};
 
 export type RegisterResponse = {
   message: string;
-  user: UserResponse;
+  user: User;
 };
 
 export type LoginResponse = {
   message: string;
-  user: UserResponse;
+  user: User;
   token: string;
+};
+
+export type ProfileResponse = {
+  message: string;
+  user: User;
+};
+
+//DATOS QUE GUARDO EN EL FRONT
+export type AuthStore = {
+  user: User | null;
+  token: string | null;
+  isAuthenticated: boolean;
+
+  login: (user: User, token: string) => void;
+  logout: () => void;
 };

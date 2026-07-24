@@ -1,5 +1,6 @@
 import { loginUser } from '../services/auth.service';
-import type { LoginFormState } from '../types/auth.types';
+import { useAuthStore } from '../stores/authStore';
+import type { LoginFormState, LoginResponse } from '../types/auth.types';
 
 export default async function loginAction(
   _previousState: LoginFormState,
@@ -32,14 +33,18 @@ export default async function loginAction(
   }
 
   try {
-    const response = await loginUser({
+    const loginResponse: LoginResponse = await loginUser({
       email,
       password,
     });
 
+    const { message, user, token } = loginResponse;
+
+    useAuthStore.getState().login(user, token);
+
     return {
       success: true,
-      message: response.message,
+      message: message,
       errors: {},
     };
   } catch (error) {
