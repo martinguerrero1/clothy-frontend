@@ -1,31 +1,60 @@
 import { Link } from 'react-router-dom';
-import LogoutButton from '../components/LogoutButton';
+import heroImage from '../assets/images/HomePage_Hero.png';
 
-export default function HomePage() {
+function HomePage() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center gap-6 px-6">
-      <LogoutButton />
-      <h1 className="text-4xl font-bold">Bienvenido a Clothy 👋</h1>
+    <>
+      <section className="relative min-h-[560px] overflow-hidden sm:min-h-[620px] lg:min-h-[680px]">
+        <img
+          src={heroImage}
+          alt="Pareja vistiendo prendas casuales de Clothy"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
 
-      <p className="max-w-lg text-center text-gray">
-        El login fue exitoso. Esta es una página temporal mientras desarrollamos el e-commerce.
-      </p>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5]/95 via-[#FAF8F5]/65 to-transparent" />
 
-      <div className="flex gap-4">
-        <Link
-          to="/profile"
-          className="rounded-md bg-primary px-5 py-2 text-white transition hover:opacity-90"
-        >
-          Ver mi perfil
-        </Link>
+        <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-16 sm:min-h-[620px] sm:px-8 lg:min-h-[680px] lg:px-12">
+          <div className="max-w-xl">
+            <span className="inline-flex rounded-md bg-[#DCCEBE]/85 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-[#6F5E53]">
+              Nueva temporada
+            </span>
 
-        <Link
-          to="/"
-          className="rounded-md border border-primary px-5 py-2 text-primary transition hover:bg-primary hover:text-white"
-        >
-          Volver al login
-        </Link>
-      </div>
-    </main>
+            <h1 className="mt-6 max-w-lg text-4xl font-semibold leading-tight tracking-tight text-[#242424] sm:text-5xl lg:text-6xl">
+              Moda para tu día a día
+            </h1>
+
+            <p className="mt-5 max-w-lg text-base leading-7 text-[#5F5A57] sm:text-lg">
+              Descubre prendas diseñadas para acompañarte en cada momento, combinando comodidad
+              excepcional con un estilo contemporáneo y minimalista.
+            </p>
+
+            <Link
+              to="/tienda"
+              className="mt-8 inline-flex min-h-13 items-center justify-center rounded-md bg-[#A45339] px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8F452F] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A45339]"
+            >
+              Explorar categorías
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Próximamente */}
+      {/* <CategoriesSection /> */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-xl bg-red-400 lg:row-span-2">Hombre</div>
+
+          <div className="rounded-xl bg-blue-400 lg:col-span-2 lg:row-span-2">Mujer</div>
+
+          <div className="rounded-xl bg-green-400">Accesorios</div>
+
+          <div className="rounded-xl bg-yellow-400">Calzado</div>
+        </div>
+      </section>
+      {/* <NewArrivalsSection /> */}
+      {/* <BestSellersSection /> */}
+    </>
   );
 }
+
+export default HomePage;
