@@ -1,16 +1,18 @@
 import axios from 'axios';
-import type { ProfileResponse, UserResponse } from '../types/auth.types';
+import type { ProfileResponse, User } from '../types/auth.types';
 import { useEffect, useState } from 'react';
+import { useAuthStore } from '../stores/authStore';
 
 export default function ProfilePage() {
-  const [usuario, setUsuario] = useState<UserResponse | null>(null);
+  const [usuario, setUsuario] = useState<User | null>(null);
+  const token = useAuthStore((state) => state.token);
 
   useEffect(() => {
     async function getUser() {
       try {
         const response = await axios.get<ProfileResponse>('http://localhost:3001/api/auth/me', {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${token}`,
           },
         });
 
@@ -21,7 +23,7 @@ export default function ProfilePage() {
     }
 
     getUser();
-  }, []);
+  }, [token]);
 
   return (
     <main className="mx-auto flex min-h-screen max-w-2xl items-center justify-center px-6">

@@ -114,15 +114,15 @@ export default function LoginPage() {
 
               <div className="my-9 h-px bg-border-soft" />
 
-              <p className="text-center text-sm text-text-secondary">
-                ¿No tienes una cuenta?
+              <div className="text-center text-sm text-text-secondary">
+                <p>¿No tienes una cuenta?</p>
                 <Link
                   to="/register"
                   className="font-semibold text-primary transition hover:text-primary-hover hover:underline"
                 >
                   Crear una cuenta
                 </Link>
-              </p>
+              </div>
             </div>
           </div>
         </section>

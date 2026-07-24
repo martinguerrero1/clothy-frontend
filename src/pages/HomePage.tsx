@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import LogoutButton from '../components/LogoutButton';
 
 export default function HomePage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center gap-6 px-6">
+      <LogoutButton />
       <h1 className="text-4xl font-bold">Bienvenido a Clothy 👋</h1>
 
       <p className="max-w-lg text-center text-gray">

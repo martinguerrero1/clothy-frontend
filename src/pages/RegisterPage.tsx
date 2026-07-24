@@ -226,15 +226,15 @@ export default function RegisterPage() {
 
               <div className="my-9 h-px bg-border-soft" />
 
-              <p className="text-center text-sm text-text-secondary">
-                ¿Ya tienes una cuenta?
+              <div className="text-center text-sm text-text-secondary">
+                <p>¿Ya tienes una cuenta?</p>
                 <Link
                   to="/login"
                   className="font-semibold text-primary transition hover:text-primary-hover hover:underline"
                 >
                   Inicia sesión
                 </Link>
-              </p>
+              </div>
             </div>
           </div>
         </section>
