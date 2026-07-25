@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/images/HomePage_Hero.png';
+import CategoriesSection from '../components/category/CategorySection';
 
 function HomePage() {
   return (
@@ -40,17 +41,7 @@ function HomePage() {
 
       {/* Próximamente */}
       {/* <CategoriesSection /> */}
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-xl bg-red-400 lg:row-span-2">Hombre</div>
-
-          <div className="rounded-xl bg-blue-400 lg:col-span-2 lg:row-span-2">Mujer</div>
-
-          <div className="rounded-xl bg-green-400">Accesorios</div>
-
-          <div className="rounded-xl bg-yellow-400">Calzado</div>
-        </div>
-      </section>
+      <CategoriesSection />
       {/* <NewArrivalsSection /> */}
       {/* <BestSellersSection /> */}
     </>
