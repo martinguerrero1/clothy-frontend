@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import heroImage from '../assets/images/HomePage_Hero.png';
 import CategoriesSection from '../components/category/CategorySection';
 import NewArrivalsSection from '../components/new-arrivals/NewArrivalsSection';
+import BestSellersSection from '../components/best-sellers/BestSellersSection';
 
 function HomePage() {
   return (
@@ -40,12 +41,11 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Próximamente */}
-      {/* <CategoriesSection /> */}
       <CategoriesSection />
-      {/* <NewArrivalsSection /> */}
+
       <NewArrivalsSection />
-      {/* <BestSellersSection /> */}
+
+      <BestSellersSection />
     </>
   );
 }

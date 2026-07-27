@@ -6,11 +6,11 @@ function CategoriesSection() {
     <section className="bg-[#FAF8F5] py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <div className="mb-8 sm:mb-10">
-          <p className="text-sm font-medium uppercase tracking-[0.16em] text-[#C97B63]">
+          <p className="text-sm font-medium uppercase tracking-[0.16em] text-primary">
             Encuentra tu estilo
           </p>
 
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#242424] sm:text-4xl">
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-text-primary sm:text-4xl">
             Explora nuestras categorías
           </h2>
         </div>
