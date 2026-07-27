@@ -15,7 +15,7 @@ function CategoriesSection() {
           </h2>
         </div>
 
-        <div className="grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[230px]">
+        <div className="grid auto-rows-55 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-57.7">
           {categories.map((category) => (
             <CategoryCard key={category.id} category={category} />
           ))}

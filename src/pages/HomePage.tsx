@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import heroImage from '../assets/images/HomePage_Hero.png';
 import CategoriesSection from '../components/category/CategorySection';
+import NewArrivalsSection from '../components/new-arrivals/NewArrivalsSection';
 
 function HomePage() {
   return (
@@ -43,6 +44,7 @@ function HomePage() {
       {/* <CategoriesSection /> */}
       <CategoriesSection />
       {/* <NewArrivalsSection /> */}
+      <NewArrivalsSection />
       {/* <BestSellersSection /> */}
     </>
   );
