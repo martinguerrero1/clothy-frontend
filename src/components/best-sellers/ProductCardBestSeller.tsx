@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import type { Product } from '../../types/product.types';
+import type { ProductResponse } from '../../types/product.types';
 
 export default function ProductCardBestSeller({
   product,
   position,
 }: {
-  product: Product;
+  product: ProductResponse;
   position: number;
 }) {
   const formattedPrice = new Intl.NumberFormat('es-AR', {
@@ -21,7 +21,7 @@ export default function ProductCardBestSeller({
     >
       <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-sand">
         <img
-          src={product.images[0].url}
+          src={product.images[0]?.url}
           alt={product.name}
           className="h-full w-full object-cover"
         />

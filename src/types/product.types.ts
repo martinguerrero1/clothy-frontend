@@ -1,25 +1,31 @@
-export type Category = {
-  id: number;
-  title: string;
-  description: string;
-  href: string;
-  image: string;
-  className: string;
+import type { CategoryResponse } from './category.types';
+
+type ProductImage = { url: string; publicId: string };
+
+//RESPUESTAS
+export type ProductApiResponse = {
+  message: string;
+  products: ProductResponse[];
 };
 
-export type Product = {
+export type ProductResponse = {
   id: string;
   name: string;
   description: string;
   price: number;
   stock: number;
-  images: {
-    url: string;
-    publicId: string;
-  }[];
-  category: 'hombre' | 'mujer' | 'accesorios' | 'calzado';
-  isActive: boolean;
+  images: ProductImage[];
+  category: CategoryResponse;
   unitsSold: number;
-  createdAt: string;
-  updatedAt: string;
+  active: boolean;
+};
+
+//PARAMETROS
+export type ProductQueryParams = {
+  search?: string;
+  category?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  sort?: 'best-sellers';
+  limit?: number;
 };

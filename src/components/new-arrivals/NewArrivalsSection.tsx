@@ -1,9 +1,16 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductCarousel from './ProductCarousel';
-import { products } from '../../data/product.data';
+import { useQuery } from '@tanstack/react-query';
+import { getProducts } from '../../services/product.service';
+import ProductCarouselSkeleton from '../skeletons/ProductCarouselSkeleton';
 
 function NewArrivalsSection() {
+  const { data, isPending, isError, refetch } = useQuery({
+    queryKey: ['NewArrivalsSection'],
+    queryFn: () => getProducts({ limit: 8 }),
+  });
+
   return (
     <section className="bg-background py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
@@ -27,7 +34,19 @@ function NewArrivalsSection() {
           </Link>
         </div>
 
-        <ProductCarousel products={products} />
+        {isPending && <ProductCarouselSkeleton />}
+
+        {isError && (
+          <div className="col-span-full flex min-h-72 flex-col items-center justify-center rounded-xl border p-6 text-center">
+            <p className="font-medium">No pudimos cargar los productos.</p>
+            <button type="button" onClick={() => refetch()}>
+              Reintentar
+            </button>
+          </div>
+        )}
+
+        {/* OBTENER PRODUCTOS */}
+        {data && <ProductCarousel products={data} />}
 
         <Link
           to="/shop"

@@ -7,16 +7,16 @@ import BestSellersSection from '../components/best-sellers/BestSellersSection';
 function HomePage() {
   return (
     <>
-      <section className="relative min-h-[560px] overflow-hidden sm:min-h-[620px] lg:min-h-[680px]">
+      <section className="relative min-h-140 overflow-hidden sm:min-h-155 lg:min-h-170">
         <img
           src={heroImage}
           alt="Pareja vistiendo prendas casuales de Clothy"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5]/95 via-[#FAF8F5]/65 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#FAF8F5]/95 via-[#FAF8F5]/65 to-transparent" />
 
-        <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-16 sm:min-h-[620px] sm:px-8 lg:min-h-[680px] lg:px-12">
+        <div className="relative mx-auto flex min-h-140 max-w-7xl items-center px-6 py-16 sm:min-h-155 sm:px-8 lg:min-h-170 lg:px-12">
           <div className="max-w-xl">
             <span className="inline-flex rounded-md bg-[#DCCEBE]/85 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-[#6F5E53]">
               Nueva temporada

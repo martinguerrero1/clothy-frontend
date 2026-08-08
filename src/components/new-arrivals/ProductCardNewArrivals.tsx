@@ -1,22 +1,20 @@
 import { Link } from 'react-router-dom';
-import type { Product } from '../../types/product.types';
+import type { ProductResponse } from '../../types/product.types';
 import { Heart, ShoppingBag } from 'lucide-react';
 
-function ProductCard({ product }: { product: Product }) {
+function ProductCardNewArrivals({ product }: { product: ProductResponse }) {
   const formattedPrice = new Intl.NumberFormat('es-AR', {
     style: 'currency',
     currency: 'ARS',
     maximumFractionDigits: 0,
   }).format(product.price);
 
-  const formattedCategory = product.category[0].toUpperCase() + product.category.slice(1);
-
   return (
     <article className="group">
       <Link to={`/products/${product.id}`} className="block">
         <div className="relative aspect-3/4 overflow-hidden rounded-xl bg-secondary/30">
           <img
-            src={product.images[0].url}
+            src={product.images[0]?.url}
             alt={product.name}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
@@ -47,7 +45,7 @@ function ProductCard({ product }: { product: Product }) {
         </div>
 
         <div className="mt-4">
-          <p className="text-sm text-text-secondary">{formattedCategory}</p>
+          <p className="text-sm text-text-secondary">{product.category.name}</p>
 
           <h3 className="mt-1 font-medium text-text-primary">{product.name}</h3>
 
@@ -58,4 +56,4 @@ function ProductCard({ product }: { product: Product }) {
   );
 }
 
-export default ProductCard;
+export default ProductCardNewArrivals;

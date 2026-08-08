@@ -1,12 +1,10 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
-import ProductCardNewArrivals from './ProductCardNewArrivals';
-import type { ProductResponse } from '../../types/product.types';
 
-function ProductCarousel({ products }: { products: ProductResponse[] }) {
+function ProductCarouselSkeleton() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
-    loop: true,
+    loop: false,
     slidesToScroll: 1,
   });
 
@@ -22,9 +20,9 @@ function ProductCarousel({ products }: { products: ProductResponse[] }) {
     <div className="relative">
       <div ref={emblaRef} className="overflow-hidden">
         <div className="-ml-4 flex touch-pan-y">
-          {products.map((product) => (
+          {[1, 2, 3, 4, 5].map((product) => (
             <div
-              key={product.id}
+              key={product}
               className="
                 min-w-0
                 flex-[0_0_85%]
@@ -32,10 +30,9 @@ function ProductCarousel({ products }: { products: ProductResponse[] }) {
                 sm:flex-[0_0_50%]
                 md:flex-[0_0_33.333%]
                 lg:flex-[0_0_25%]
+                relative aspect-3/4 overflow-hidden rounded-xl bg-gray-500 animate-pulse
               "
-            >
-              <ProductCardNewArrivals product={product} />
-            </div>
+            />
           ))}
         </div>
       </div>
@@ -69,4 +66,4 @@ function ProductCarousel({ products }: { products: ProductResponse[] }) {
   );
 }
 
-export default ProductCarousel;
+export default ProductCarouselSkeleton;
