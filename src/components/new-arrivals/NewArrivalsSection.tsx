@@ -1,15 +1,11 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductCarousel from './ProductCarousel';
-import { useQuery } from '@tanstack/react-query';
-import { getProducts } from '../../services/product.service';
 import ProductCarouselSkeleton from '../skeletons/ProductCarouselSkeleton';
+import useProducts from '@/hooks/useProducts';
 
 function NewArrivalsSection() {
-  const { data, isPending, isError, refetch } = useQuery({
-    queryKey: ['NewArrivalsSection'],
-    queryFn: () => getProducts({ limit: 8 }),
-  });
+  const { data, isPending, isError, refetch } = useProducts({}, { limit: 8 });
 
   return (
     <section className="bg-background py-16 sm:py-20">
@@ -46,7 +42,7 @@ function NewArrivalsSection() {
         )}
 
         {/* OBTENER PRODUCTOS */}
-        {data && <ProductCarousel products={data} />}
+        {data && <ProductCarousel products={data.products} />}
 
         <Link
           to="/shop"

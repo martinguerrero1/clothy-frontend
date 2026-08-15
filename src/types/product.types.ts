@@ -6,6 +6,9 @@ type ProductImage = { url: string; publicId: string };
 export type ProductApiResponse = {
   message: string;
   products: ProductResponse[];
+  totalResults: string;
+  page: string;
+  limit: string;
 };
 
 export type ProductResponse = {
@@ -24,8 +27,9 @@ export type ProductResponse = {
 export type ProductQueryParams = {
   search?: string;
   category?: string;
+  gender?: string;
   minPrice?: number;
   maxPrice?: number;
-  sort?: 'best-sellers';
-  limit?: number;
+  sort?: string;
+  page?: number;
 };

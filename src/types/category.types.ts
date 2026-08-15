@@ -24,7 +24,7 @@ export type CategoryCardProps = {
   className: string;
 };
 
-export type categoriesLayouts = Record<CategorySlug, string>;
+export type categoriesLayouts = Record<'remera' | 'abrigo' | 'pantalon' | 'accesorios', string>;
 
 //PARAMS
 export type CategoryQueryParams = {

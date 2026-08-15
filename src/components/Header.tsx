@@ -8,11 +8,11 @@ const navigationLinks = [
   },
   {
     label: 'Hombre',
-    to: '/tienda?categoria=hombre',
+    to: '/tienda?category=hombre',
   },
   {
     label: 'Mujer',
-    to: '/tienda?categoria=mujer',
+    to: '/tienda?category=mujer',
   },
   {
     label: 'Nosotros',

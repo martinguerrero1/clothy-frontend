@@ -1,17 +1,10 @@
 import CategoryCard from './CategoryCard';
 import CategoryCardSkeleton from '../skeletons/CategoryCardSkeleton';
-import type { categoriesLayouts } from '../../types/category.types';
 import { getCategories } from '../../services/category.service';
 import { useQuery } from '@tanstack/react-query';
+import type { categoriesLayouts } from '@/types/category.types';
 
-//COMO YA NO ME FUNCIONA ESTA FORMA LO TENGO QUE HACER DINAMICO. QUIERO QUE EL SERVICIO DE OBTENER CATEGORIAS LE PASE LIMIT DE 4, Y QUE POR CARD VERIFIQUE SI ES X CATEGORIA TENGA CIERTAS CLASES, O SINO "".
-const categoriesLayouts: categoriesLayouts = {
-  remera: 'lg:row-span-2',
-  abrigo: 'lg:col-span-2 lg:row-span-2',
-  accesorios: '',
-  calzado: '',
-  pantalon: '',
-};
+const categoriesLayouts = ['lg:row-span-2', 'lg:col-span-2 lg:row-span-2', '', ''];
 
 function CategoriesSection() {
   //PETICION Y MANEJO ESTADOS ASINCRONICO
@@ -19,12 +12,12 @@ function CategoriesSection() {
     queryKey: ['CategoriesSection'], //la key verifica estado en cache
     queryFn: () => getCategories({ limit: 4 }), //servicio
     select: (categoriesResponse) => {
-      return categoriesResponse.map((category) => {
+      return categoriesResponse.map((category, index) => {
         return {
           name: category.name,
           slug: category.slug,
           image: category.image.url,
-          className: categoriesLayouts[category.slug],
+          className: categoriesLayouts[index],
         };
       });
     },

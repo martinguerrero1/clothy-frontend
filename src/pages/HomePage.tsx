@@ -10,11 +10,11 @@ function HomePage() {
       <section className="relative min-h-140 overflow-hidden sm:min-h-155 lg:min-h-170">
         <img
           src={heroImage}
-          alt="Pareja vistiendo prendas casuales de Clothy"
+          alt="Ropa de clothy"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
 
-        <div className="absolute inset-0 bg-linear-to-r from-[#FAF8F5]/95 via-[#FAF8F5]/65 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-r from-[#FAF8F5]/75 via-[#FAF8F5]/65 to-transparent" />
 
         <div className="relative mx-auto flex min-h-140 max-w-7xl items-center px-6 py-16 sm:min-h-155 sm:px-8 lg:min-h-170 lg:px-12">
           <div className="max-w-xl">

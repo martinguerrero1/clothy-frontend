@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import type { ProductResponse } from '../../types/product.types';
-import { Heart, ShoppingBag } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 
-function ProductCardNewArrivals({ product }: { product: ProductResponse }) {
+function ProductCardShop({ product }: { product: ProductResponse }) {
   const formattedPrice = new Intl.NumberFormat('es-AR', {
     style: 'currency',
     currency: 'ARS',
@@ -10,7 +10,7 @@ function ProductCardNewArrivals({ product }: { product: ProductResponse }) {
   }).format(product.price);
 
   return (
-    <article className="group bg-gray-200/20 rounded-xl p-2 shadow-md mb-2">
+    <article className="group bg-gray-200/20 rounded-xl p-2 shadow-md mb-2 h-fit">
       <Link to={`/products/${product.id}`} className="block">
         <div className="relative aspect-3/4 overflow-hidden rounded-xl">
           <img
@@ -21,17 +21,6 @@ function ProductCardNewArrivals({ product }: { product: ProductResponse }) {
 
           <button
             type="button"
-            aria-label={`Agregar ${product.name} a favoritos`}
-            className="absolute right-3 top-3 flex size-9 items-center justify-center rounded-full bg-white/90 transition-colors hover:bg-white"
-            onClick={(event) => {
-              event.preventDefault();
-            }}
-          >
-            <Heart size={18} />
-          </button>
-
-          <button
-            type="button"
             aria-label={`Agregar ${product.name} al carrito de compras`}
             className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-xl p-2 bg-gray-200 hover:bg-white"
             onClick={(event) => {
@@ -39,7 +28,7 @@ function ProductCardNewArrivals({ product }: { product: ProductResponse }) {
             }}
           >
             <span className="flex gap-2 items-center">
-              <ShoppingBag size={20} /> Agregar
+              <ShoppingCart size={20} /> Añadir al carrito
             </span>
           </button>
         </div>
@@ -56,4 +45,4 @@ function ProductCardNewArrivals({ product }: { product: ProductResponse }) {
   );
 }
 
-export default ProductCardNewArrivals;
+export default ProductCardShop;

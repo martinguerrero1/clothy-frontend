@@ -1,18 +1,14 @@
 import { clothyApi } from '../lib/axios';
-import type {
-  ProductApiResponse,
-  ProductQueryParams,
-  ProductResponse,
-} from '../types/product.types';
+import type { ProductApiResponse, ProductQueryParams } from '../types/product.types';
 
 export async function getProducts(
   productsQueryParam?: ProductQueryParams
-): Promise<ProductResponse[]> {
+): Promise<ProductApiResponse> {
   const response = await clothyApi.get<ProductApiResponse>(`/products`, {
     params: productsQueryParam,
   });
 
-  const products = response.data.products;
+  const ProductData = response.data;
 
-  return products;
+  return ProductData;
 }

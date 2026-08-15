@@ -1,13 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
 import ProductCardBestSeller from './ProductCardBestSeller';
-import { getProducts } from '../../services/product.service';
 import ProductCardBestSellerSkeleton from '../skeletons/ProductCardBestSellerSkeleton';
+import useProducts from '@/hooks/useProducts';
 
 export default function BestSellersSection() {
-  const { data, isPending, isError, refetch } = useQuery({
-    queryKey: ['BestSellersSection'],
-    queryFn: () => getProducts({ sort: 'best-sellers', limit: 3 }),
-  });
+  const { data, isPending, isError, refetch } = useProducts({ sort: 'best-sellers' }, { limit: 3 });
 
   return (
     <section className="flex flex-col gap-12 py-20">
@@ -29,7 +25,7 @@ export default function BestSellersSection() {
           </div>
         )}
 
-        {data?.map((product, index) => (
+        {data?.products.map((product, index) => (
           <ProductCardBestSeller key={product.id} product={product} position={index + 1} />
         ))}
       </div>
