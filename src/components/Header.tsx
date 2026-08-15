@@ -1,18 +1,20 @@
-import { Menu, Search, ShoppingBag, UserRound } from 'lucide-react';
+import { Search, ShoppingBag, UserRound } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
+import { MobileMenu } from './MobileMenu';
+import type { NavigationLinks } from '@/types/shop.types';
 
-const navigationLinks = [
+const navigationLinks: NavigationLinks = [
   {
     label: 'Tienda',
     to: '/tienda',
   },
   {
     label: 'Hombre',
-    to: '/tienda?category=hombre',
+    to: '/tienda?gender=hombre',
   },
   {
     label: 'Mujer',
-    to: '/tienda?category=mujer',
+    to: '/tienda?gender=mujer',
   },
   {
     label: 'Nosotros',
@@ -28,6 +30,7 @@ function Header() {
           Clothy
         </Link>
 
+        {/* NAV LINKS */}
         <nav aria-label="Navegación principal" className="hidden items-center gap-8 lg:flex">
           {navigationLinks.map((link) => (
             <NavLink
@@ -44,6 +47,7 @@ function Header() {
           ))}
         </nav>
 
+        {/* ICONS */}
         <div className="flex items-center gap-1 sm:gap-2">
           <button
             type="button"
@@ -88,7 +92,7 @@ function Header() {
             aria-label="Abrir menú"
             className="flex size-10 items-center justify-center rounded-full text-[#242424] transition-colors hover:bg-[#DCCEBE]/45 lg:hidden"
           >
-            <Menu size={22} strokeWidth={1.8} />
+            <MobileMenu navLinks={navigationLinks} />
           </button>
         </div>
       </div>

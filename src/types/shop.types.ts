@@ -22,3 +22,9 @@ export type priceSearchParam = {
 export type ProductQueryOptions = {
   limit: number;
 };
+
+// HEADER
+export type NavigationLinks = {
+  label: string;
+  to: string;
+}[];

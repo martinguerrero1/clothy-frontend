@@ -35,7 +35,7 @@ function HomePage() {
               to="/tienda"
               className="mt-8 inline-flex min-h-13 items-center justify-center rounded-md bg-[#A45339] px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#8F452F] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A45339]"
             >
-              Explorar categorías
+              Explora la tienda
             </Link>
           </div>
         </div>
