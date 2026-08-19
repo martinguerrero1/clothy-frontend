@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ProductCarousel from './ProductCarousel';
+import ProductCarousel from '../ProductCarousel';
 import ProductCarouselSkeleton from '../skeletons/ProductCarouselSkeleton';
 import useProducts from '@/hooks/useProducts';
 

@@ -11,7 +11,7 @@ function ProductCardShop({ product }: { product: ProductResponse }) {
 
   return (
     <article className="group bg-gray-200/20 rounded-xl p-2 shadow-md mb-2 h-fit">
-      <Link to={`/products/${product.id}`} className="block">
+      <Link to={`/tienda/${product.id}`} className="block">
         <div className="relative aspect-3/4 overflow-hidden rounded-xl">
           <img
             src={product.images[0]?.url}

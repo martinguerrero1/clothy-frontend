@@ -6,6 +6,7 @@ import HomePage from '../pages/HomePage';
 import ProfilePage from '../pages/ProfilePage';
 import MainLayout from '../layouts/MainLayout';
 import ShopPage from '@/pages/ShopPage';
+import { ProductDetailPage } from '@/pages/ProductDetailPage';
 
 export const router = createBrowserRouter([
   {
@@ -17,12 +18,16 @@ export const router = createBrowserRouter([
         index: true,
       },
       {
+        path: '/profile',
+        element: <ProfilePage />,
+      },
+      {
         path: '/tienda',
         element: <ShopPage />,
       },
       {
-        path: '/profile',
-        element: <ProfilePage />,
+        path: '/tienda/:id',
+        element: <ProductDetailPage />,
       },
     ],
   },

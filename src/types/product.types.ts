@@ -19,6 +19,7 @@ export type ProductResponse = {
   stock: number;
   images: ProductImage[];
   category: CategoryResponse;
+  gender: string;
   unitsSold: number;
   active: boolean;
 };
