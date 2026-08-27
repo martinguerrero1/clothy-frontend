@@ -1,33 +1,43 @@
-type CategoryImage = { url: string; publicId: string };
+//====================================
+//CATEGORY RESPONSES
+//====================================
 
-type CategorySlug = 'remera' | 'abrigo' | 'pantalon' | 'accesorios' | 'calzado';
-
-//RESPONSE
 export type CategoriesApiResponse = {
   message: string;
   categories: CategoryResponse[];
 };
 
+export type CategoryApiResponse = {
+  message: string;
+  categories: CategoryResponse;
+};
+
 export type CategoryResponse = {
   id: string;
   name: string;
-  slug: CategorySlug;
-  image: CategoryImage;
+  slug: string;
+  image: { url: string; publicId: string };
   active: boolean;
 };
 
-//UI
+//====================================
+//CATEGORY UI
+//====================================
+
 export type CategoryCardProps = {
   name: string;
-  slug: CategorySlug;
-  image: string;
+  slug: string;
+  imageUrl: string;
   className: string;
 };
 
 export type categoriesLayouts = Record<'remera' | 'abrigo' | 'pantalon' | 'accesorios', string>;
 
-//PARAMS
-export type CategoryQueryParams = {
+//====================================
+//CATEGORY PARAMS
+//====================================
+
+export type GetCategoriesParams = {
   search?: string;
   name?: string;
   limit?: number;

@@ -7,6 +7,7 @@ import ProfilePage from '../pages/ProfilePage';
 import MainLayout from '../layouts/MainLayout';
 import ShopPage from '@/pages/ShopPage';
 import { ProductDetailPage } from '@/pages/ProductDetailPage';
+import CartPage from '@/pages/CartPage';
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: '/tienda/:id',
         element: <ProductDetailPage />,
+      },
+      {
+        path: '/carrito',
+        element: <CartPage />,
       },
     ],
   },

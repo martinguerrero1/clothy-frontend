@@ -12,7 +12,7 @@ function CategoryCard({ category }: { category: CategoryCardProps }) {
       `}
     >
       <img
-        src={category.image}
+        src={category.imageUrl}
         alt={`Categoría ${category.name}`}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />

@@ -5,7 +5,7 @@ export type User = {
   lastName: string;
   username: string;
   email: string;
-  role: 'cliente' | 'vendedor' | 'admin';
+  role: 'usuario' | 'admin';
 };
 
 //DATOS DEL FORMULARIO

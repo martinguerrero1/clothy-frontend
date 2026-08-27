@@ -16,7 +16,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
   useEffect(() => {
     if (state.success) {
-      navigate('/home');
+      navigate('/');
     }
   }, [state.success, navigate]);
 

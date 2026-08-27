@@ -16,7 +16,7 @@ function CategoriesSection() {
         return {
           name: category.name,
           slug: category.slug,
-          image: category.image.url,
+          imageUrl: category.image.url,
           className: categoriesLayouts[index],
         };
       });

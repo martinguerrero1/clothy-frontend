@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import type { ProductResponse } from '../../types/product.types';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
+import useAddToCart from '@/hooks/cart/useAddToCart';
 
 function ProductCardShop({ product }: { product: ProductResponse }) {
   const formattedPrice = new Intl.NumberFormat('es-AR', {
@@ -9,9 +10,17 @@ function ProductCardShop({ product }: { product: ProductResponse }) {
     maximumFractionDigits: 0,
   }).format(product.price);
 
+  const { mutate: addToCart } = useAddToCart();
+
   return (
-    <article className="group bg-gray-200/20 rounded-xl p-2 shadow-md mb-2 h-fit">
-      <Link to={`/tienda/${product.id}`} className="block">
+    <article className="group relative bg-gray-200/20 rounded-xl p-2 shadow-md mb-2 h-fit">
+      <Link
+        to={`/tienda/${product.id}`}
+        className="absolute inset-0 z-0"
+        aria-label={`Ver ${product.name}`}
+      />
+
+      <div className="relative z-0 pointer-events-none">
         <div className="relative aspect-3/4 overflow-hidden rounded-xl">
           <img
             src={product.images[0]?.url}
@@ -22,13 +31,11 @@ function ProductCardShop({ product }: { product: ProductResponse }) {
           <button
             type="button"
             aria-label={`Agregar ${product.name} al carrito de compras`}
-            className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-xl p-2 bg-gray-200 hover:bg-white"
-            onClick={(event) => {
-              event.preventDefault();
-            }}
+            className="pointer-events-auto absolute bottom-2 left-1/2 z-10 -translate-x-1/2 rounded-xl bg-gray-200 p-2 hover:bg-white"
+            onClick={() => addToCart({ productId: product.id, quantity: 1 })}
           >
-            <span className="flex gap-2 items-center">
-              <ShoppingCart size={20} /> Añadir al carrito
+            <span className="flex items-center gap-2">
+              <ShoppingBag size={20} /> Agregar
             </span>
           </button>
         </div>
@@ -40,7 +47,7 @@ function ProductCardShop({ product }: { product: ProductResponse }) {
 
           <p className="mt-2 font-semibold text-text-primary">{formattedPrice}</p>
         </div>
-      </Link>
+      </div>
     </article>
   );
 }
