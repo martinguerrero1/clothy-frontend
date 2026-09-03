@@ -4,7 +4,7 @@ export function GenderFilter({
   genderSearchParam,
   onFilterChange,
 }: {
-  genderSearchParam: string;
+  genderSearchParam?: string;
   onFilterChange: (filter: HandlerFilterChangeNames, value: string) => void;
 }) {
   const genders = ['hombre', 'mujer', 'unisex'];

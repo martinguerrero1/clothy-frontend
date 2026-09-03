@@ -15,7 +15,7 @@ function ProductCardNewArrivals({ product }: { product: ProductResponse }) {
   return (
     <article className="group relative bg-gray-200/20 rounded-xl p-2 shadow-md mb-2">
       <Link
-        to={`/products/${product.id}`}
+        to={`/tienda/${product.id}`}
         className="absolute inset-0 z-0"
         aria-label={`Ver ${product.name}`}
       />

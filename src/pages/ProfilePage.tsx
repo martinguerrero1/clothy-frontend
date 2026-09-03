@@ -2,6 +2,7 @@ import axios from 'axios';
 import type { ProfileResponse, User } from '../types/auth.types';
 import { useEffect, useState } from 'react';
 import { useAuthStore } from '../stores/authStore';
+import LogoutButton from '@/components/LogoutButton';
 
 export default function ProfilePage() {
   const [usuario, setUsuario] = useState<User | null>(null);
@@ -26,7 +27,7 @@ export default function ProfilePage() {
   }, [token]);
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-2xl items-center justify-center px-6">
+    <main className="mx-auto flex min-h-screen max-w-2xl items-center justify-center px-6 flex-col gap-4">
       <section className="w-full rounded-xl border bg-white p-8 shadow-sm">
         <h1 className="mb-6 text-3xl font-bold">Mi perfil</h1>
 
@@ -59,6 +60,8 @@ export default function ProfilePage() {
           </div>
         </div>
       </section>
+
+      <LogoutButton />
     </main>
   );
 }

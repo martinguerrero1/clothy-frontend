@@ -20,7 +20,7 @@ export const addCategory = async (formData: FormData) => {
 };
 
 export const modifyCategory = async (id: string, formData: FormData) => {
-  const { data } = await clothyApi.put<CategoryApiResponse>(`/categories/${id}`, formData);
+  const { data } = await clothyApi.patch<CategoryApiResponse>(`/categories/${id}`, formData);
 
   return data;
 };

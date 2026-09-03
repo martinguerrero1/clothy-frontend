@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 function CategoryCard({ category }: { category: CategoryCardProps }) {
   return (
     <Link
-      to=""
+      to={`/tienda?category=${category.slug}`}
       className={`
         group relative min-h-55 overflow-hidden rounded-2xl
         ${category.className}

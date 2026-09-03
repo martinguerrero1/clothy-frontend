@@ -1,10 +1,10 @@
 export function ShopHeader({
   totalResults,
-  sort,
+  sort = 'newest',
   onSortChange,
 }: {
   totalResults: string | null;
-  sort: string;
+  sort?: string;
   onSortChange: (filter: 'sort', value: string) => void;
 }) {
   return (

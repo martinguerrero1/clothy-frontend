@@ -1,25 +1,39 @@
-import { clothyApi } from '../lib/axios';
+import { clothyApi } from '@/lib/axios';
 import type {
   ProductApiResponse,
-  ProductQueryParams,
+  ProductsApiResponse,
+  GetProductsParams,
   ProductResponse,
-} from '../types/product.types';
+} from '@/types/product.types';
 
-export async function getProducts(
-  productsQueryParam?: ProductQueryParams
-): Promise<ProductApiResponse> {
-  const response = await clothyApi.get<ProductApiResponse>(`/products`, {
-    params: productsQueryParam,
-  });
+export const getProducts = async (
+  queryParams?: GetProductsParams
+): Promise<ProductsApiResponse> => {
+  const { data } = await clothyApi.get<ProductsApiResponse>('/products', { params: queryParams });
 
-  const ProductData = response.data;
+  return data;
+};
 
-  return ProductData;
-}
+export const getProductById = async (id: string): Promise<ProductResponse> => {
+  const { data } = await clothyApi.get<ProductApiResponse>(`/products/${id}`);
 
-export async function getOneProduct(id: string): Promise<ProductResponse> {
-  const response = await clothyApi.get(`/products/${id}`);
+  return data.product;
+};
 
-  const ProductData = response.data.product;
-  return ProductData;
-}
+export const addProduct = async (formData: FormData): Promise<ProductResponse> => {
+  const { data } = await clothyApi.post<ProductApiResponse>('/products', formData);
+
+  return data.product;
+};
+
+export const modifyProduct = async (id: string, formData: FormData): Promise<ProductResponse> => {
+  const { data } = await clothyApi.patch<ProductApiResponse>(`/products/${id}`, formData);
+
+  return data.product;
+};
+
+export const deactivateProduct = async (id: string): Promise<ProductResponse> => {
+  const { data } = await clothyApi.delete<ProductApiResponse>(`/products/${id}`);
+
+  return data.product;
+};

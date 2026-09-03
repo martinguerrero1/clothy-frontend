@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { Minus, Plus, ShoppingCart, Truck, RotateCcw, ShieldCheck } from 'lucide-react';
 import { useParams } from 'react-router-dom';
-import useOneProduct from '@/hooks/useOneProduct';
 import ProductCarousel from '@/components/ProductCarousel';
-import useProducts from '@/hooks/useProducts';
 import { DetailProductPageSkeleton } from '@/components/skeletons/DetailProductPageSkeleton';
 import { ErrorState } from '@/components/ui/ErrorState';
+import useProductById from '@/hooks/product/useProductById';
+import useProducts from '@/hooks/product/useProducts';
 
 export function ProductDetailPage() {
-  const { id } = useParams();
+  const { id = '' } = useParams();
 
-  const { data: product, isPending, isError } = useOneProduct(id);
-  const { data: bestSellersProducts } = useProducts({ sort: 'best-sellers' }, { limit: 5 });
+  const { data: product, isPending, isError } = useProductById(id);
+  const { data: bestSellersProducts } = useProducts({ sort: 'best-sellers', limit: 5 });
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);

@@ -2,10 +2,10 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductCarousel from '../ProductCarousel';
 import ProductCarouselSkeleton from '../skeletons/ProductCarouselSkeleton';
-import useProducts from '@/hooks/useProducts';
+import useProducts from '@/hooks/product/useProducts';
 
 function NewArrivalsSection() {
-  const { data, isPending, isError, refetch } = useProducts({}, { limit: 8 });
+  const { data, isPending, isError, refetch } = useProducts({ limit: 8 });
 
   return (
     <section className="bg-background py-16 sm:py-20">

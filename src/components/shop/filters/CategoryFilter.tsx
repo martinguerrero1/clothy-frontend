@@ -7,7 +7,7 @@ export function CategoryFilter({
   onFilterChange,
 }: {
   categories: CategoryResponse[] | null;
-  categorySearchParam: string;
+  categorySearchParam?: string;
   onFilterChange: (filter: HandlerFilterChangeNames, value: string) => void;
 }) {
   return (

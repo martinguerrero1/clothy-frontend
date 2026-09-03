@@ -1,6 +1,7 @@
 import { Search, ShoppingBag, UserRound } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { MobileMenu } from './MobileMenu';
+import { useAuthStore } from '@/stores/authStore';
 import type { NavigationLinks } from '@/types/shop.types';
 
 const navigationLinks: NavigationLinks = [
@@ -23,6 +24,7 @@ const navigationLinks: NavigationLinks = [
 ];
 
 function Header() {
+  const { user } = useAuthStore();
   return (
     <header className="border-b border-[#DCCEBE]/70 bg-[#FAF8F5]">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
@@ -49,6 +51,16 @@ function Header() {
 
         {/* ICONS */}
         <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex py-2 px-4 items-center justify-center rounded-full text-[#242424] transition-colors hover:bg-[#DCCEBE]/45 hover:text-[#e4562b]">
+            {/* otros botones */}
+
+            {user?.role === 'admin' && (
+              <Link to="/admin" className="...">
+                Admin
+              </Link>
+            )}
+          </div>
+
           <button
             type="button"
             aria-label="Buscar productos"

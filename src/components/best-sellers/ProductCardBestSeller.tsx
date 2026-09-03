@@ -16,7 +16,7 @@ export default function ProductCardBestSeller({
 
   return (
     <Link
-      to={`/products/${product.id}`}
+      to={`/tienda/${product.id}`}
       className="flex items-center gap-4 rounded-2xl bg-white p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
     >
       <div className="h-24 w-24 shrink-0 overflow-hidden rounded-xl bg-sand">

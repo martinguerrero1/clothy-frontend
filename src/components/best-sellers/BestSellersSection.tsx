@@ -1,9 +1,9 @@
 import ProductCardBestSeller from './ProductCardBestSeller';
 import ProductCardBestSellerSkeleton from '../skeletons/ProductCardBestSellerSkeleton';
-import useProducts from '@/hooks/useProducts';
+import useProducts from '@/hooks/product/useProducts';
 
 export default function BestSellersSection() {
-  const { data, isPending, isError, refetch } = useProducts({ sort: 'best-sellers' }, { limit: 3 });
+  const { data, isPending, isError, refetch } = useProducts({ sort: 'best-sellers', limit: 3 });
 
   return (
     <section className="flex flex-col gap-12 py-20">

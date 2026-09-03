@@ -15,3 +15,15 @@ clothyApi.interceptors.request.use((config) => {
 
   return config;
 });
+
+// CIERRA LA SESIÓN SI EL BACKEND RECHAZA EL TOKEN
+clothyApi.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      useAuthStore.getState().logout();
+    }
+
+    return Promise.reject(error);
+  }
+);
