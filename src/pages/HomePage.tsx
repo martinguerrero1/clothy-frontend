@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import heroImage from '../assets/images/HomePage_Hero.png';
 import CategoriesSection from '../components/category/CategorySection';
 import NewArrivalsSection from '../components/new-arrivals/NewArrivalsSection';
 import BestSellersSection from '../components/best-sellers/BestSellersSection';
@@ -9,7 +8,7 @@ function HomePage() {
     <>
       <section className="relative min-h-140 overflow-hidden sm:min-h-155 lg:min-h-170">
         <img
-          src={heroImage}
+          src="https://res.cloudinary.com/g8lku7ry/image/upload/v1788455188/HomePage_Hero.jpg"
           alt="Ropa de clothy"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />

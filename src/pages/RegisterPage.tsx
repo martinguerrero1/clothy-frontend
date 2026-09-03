@@ -1,5 +1,4 @@
 import { useActionState, useEffect } from 'react';
-import portada from '../assets/images/portada.png';
 import type { RegisterFormState } from '../types/auth.types';
 import { Link, useNavigate } from 'react-router-dom';
 import registerAction from '../actions/register.action';
@@ -24,7 +23,11 @@ export default function RegisterPage() {
       <div className="mx-auto flex min-h-screen w-full max-w-360">
         {/* Lateral visual */}
         <section className="relative hidden min-h-screen w-[52%] overflow-hidden bg-secondary lg:block">
-          <img src={portada} alt="Portada" className="h-full w-full object-cover" />
+          <img
+            src="https://res.cloudinary.com/g8lku7ry/image/upload/v1788455592/rayul-_M6gy9oHgII-unsplash.jpg"
+            alt="Portada"
+            className="h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-linear-to-b from-black/15 via-transparent to-black/10" />
         </section>
 

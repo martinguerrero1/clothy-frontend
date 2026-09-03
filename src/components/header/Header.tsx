@@ -1,7 +1,10 @@
-import { Search, ShoppingBag, UserRound } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { MobileMenu } from './MobileMenu';
+import { useAuthStore } from '@/stores/authStore';
 import type { NavigationLinks } from '@/types/shop.types';
+import UserMenu from './UserMenu';
+import HeaderSearch from './HeaderSearch';
 
 const navigationLinks: NavigationLinks = [
   {
@@ -23,6 +26,8 @@ const navigationLinks: NavigationLinks = [
 ];
 
 function Header() {
+  const { user } = useAuthStore();
+
   return (
     <header className="border-b border-[#DCCEBE]/70 bg-[#FAF8F5]">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12">
@@ -37,7 +42,7 @@ function Header() {
               key={link.label}
               to={link.to}
               className={({ isActive }) =>
-                `relative py-2 text-sm font-bold     transition-colors ${
+                `relative py-2 text-sm font-bold transition-colors ${
                   isActive ? 'text-[#C97B63]' : 'text-[#242424] hover:text-[#C97B63]'
                 }`
               }
@@ -49,44 +54,43 @@ function Header() {
 
         {/* ICONS */}
         <div className="flex items-center gap-1 sm:gap-2">
-          <button
-            type="button"
-            aria-label="Buscar productos"
-            className="flex size-10 items-center justify-center rounded-full text-[#242424] transition-colors hover:bg-[#DCCEBE]/45 hover:text-[#C97B63]"
-          >
-            <Search size={20} strokeWidth={1.8} />
-          </button>
+          {/* ADMIN */}
+          {user?.role === 'admin' && (
+            <Link
+              to="/admin"
+              className="hidden rounded-full px-4 py-2 text-sm font-bold text-[#242424] transition-colors hover:bg-[#DCCEBE]/45 hover:text-[#C97B63] sm:block"
+            >
+              Admin
+            </Link>
+          )}
 
-          <NavLink
-            to="/profile"
-            aria-label="Mi perfil"
-            className={({ isActive }) =>
-              `
-              flex size-10 items-center justify-center rounded-full transition-all duration-200  hover:bg-[#DCCEBE]/45 hover:text-[#C97B63]
-              ${isActive ? 'bg-secondary text-primary' : ''}
-              `
-            }
-          >
-            <UserRound size={20} strokeWidth={1.8} />
-          </NavLink>
+          {/* SEARCH */}
+          <HeaderSearch />
 
+          {/* USER */}
+          <UserMenu />
+
+          {/* CART */}
           <NavLink
             to="/carrito"
             aria-label="Ver carrito"
             className={({ isActive }) =>
               `
-              relative flex size-10 items-center justify-center rounded-full text-[#242424] transition-colors hover:bg-[#DCCEBE]/45 hover:text-[#C97B63]
+              relative flex size-10 items-center justify-center rounded-full
+              text-[#242424] transition-colors
+              hover:bg-[#DCCEBE]/45 hover:text-[#C97B63]
               ${isActive ? 'bg-secondary text-primary' : ''}
               `
             }
           >
             <ShoppingBag size={20} strokeWidth={1.8} />
 
-            <span className="absolute top-0.5 right-0.5 flex size-4 items-center justify-center rounded-full bg-[#C97B63] text-[10px] font-semibold text-white">
+            <span className="absolute right-0.5 top-0.5 flex size-4 items-center justify-center rounded-full bg-[#C97B63] text-[10px] font-semibold text-white">
               0
             </span>
           </NavLink>
 
+          {/* MOBILE MENU */}
           <button
             type="button"
             aria-label="Abrir menú"

@@ -1,6 +1,5 @@
 import { useActionState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import portada from '../assets/images/portada.png';
 import type { LoginFormState } from '../types/auth.types';
 import loginAction from '../actions/login.action';
 
@@ -16,22 +15,26 @@ export default function LoginPage() {
   const navigate = useNavigate();
   useEffect(() => {
     if (state.success) {
-      navigate('/home');
+      navigate('/');
     }
   }, [state.success, navigate]);
 
   return (
-    <main className="min-h-screen bg-background text-text-primary">
-      <div className="mx-auto flex min-h-screen w-full max-w-360">
+    <main className="bg-background text-text-primary">
+      <div className="mx-auto flex w-full max-w-360">
         {/* Lateral visual */}
-        <section className="relative hidden min-h-screen w-[52%] overflow-hidden bg-secondary lg:block">
-          <img src={portada} alt="Portada" className="h-full w-full object-cover" />
+        <section className="relative hidden max-h-screen w-[52%] overflow-hidden bg-secondary lg:block">
+          <img
+            src="https://res.cloudinary.com/g8lku7ry/image/upload/v1788455592/rayul-_M6gy9oHgII-unsplash.jpg"
+            alt="Portada"
+            className="h-full w-full object-cover"
+          />
 
           <div className="absolute inset-0 bg-linear-to-b from-black/15 via-transparent to-black/10" />
         </section>
 
         {/* Contenido */}
-        <section className="flex min-h-screen flex-1 flex-col px-5 py-8">
+        <section className="flex lg:max-h-screen flex-1 flex-col px-5 py-8">
           <div className="flex flex-1 items-center justify-center">
             <div className="w-full max-w-125 rounded-2xl border border-border-soft bg-surface px-6 py-10 shadow-card sm:px-10 lg:px-14 lg:py-12">
               <header className="mb-9">

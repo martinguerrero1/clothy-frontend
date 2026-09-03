@@ -1,11 +1,11 @@
 //USUARIO
 export type User = {
-  id: string;
+  _id: string;
   name: string;
   lastName: string;
   username: string;
   email: string;
-  role: 'cliente' | 'vendedor' | 'admin';
+  role: 'usuario' | 'admin';
 };
 
 //DATOS DEL FORMULARIO

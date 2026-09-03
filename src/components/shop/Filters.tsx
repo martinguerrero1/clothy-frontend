@@ -2,7 +2,10 @@ import type { CategoryResponse } from '@/types/category.types';
 import { CategoryFilter } from './filters/CategoryFilter';
 import { GenderFilter } from './filters/GenderFilter';
 import { PriceFilter } from './filters/PriceFilter';
-import type { HandlerFilterChangeNames, priceSearchParam, ShopFilters } from '@/types/shop.types';
+import type { HandlerFilterChangeNames } from '@/types/shop.types';
+import type { GetProductsParams } from '@/types/product.types';
+
+type ProductFilters = Pick<GetProductsParams, 'category' | 'gender' | 'minPrice' | 'maxPrice'>;
 
 export function Filters({
   categories,
@@ -11,21 +14,12 @@ export function Filters({
   onPricesChange,
 }: {
   categories: CategoryResponse[] | null;
-  filters: ShopFilters;
+  filters: ProductFilters;
   onFilterChange: (filter: HandlerFilterChangeNames, value: string) => void;
   onPricesChange: (values: [number, number]) => void;
 }) {
-  const priceFilters: priceSearchParam = {
-    minPrice: filters.minPrice,
-    maxPrice: filters.maxPrice,
-  };
-
   return (
     <aside className="w-full">
-      <div className="mb-6">
-        <h2 className="text-lg font-semibold text-gray-900">Filtros</h2>
-      </div>
-
       <div>
         <CategoryFilter
           categories={categories}
@@ -35,7 +29,10 @@ export function Filters({
 
         <GenderFilter genderSearchParam={filters.gender} onFilterChange={onFilterChange} />
 
-        <PriceFilter priceSearchParam={priceFilters} onPricesChange={onPricesChange} />
+        <PriceFilter
+          priceParams={{ minPrice: filters.minPrice, maxPrice: filters.maxPrice }}
+          onPricesChange={onPricesChange}
+        />
       </div>
     </aside>
   );

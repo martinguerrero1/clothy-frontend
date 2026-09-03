@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
-import ProductCardNewArrivals from './ProductCardNewArrivals';
-import type { ProductResponse } from '../../types/product.types';
+import ProductCardNewArrivals from './new-arrivals/ProductCardNewArrivals';
+import type { ProductResponse } from '../types/product.types';
 
 function ProductCarousel({ products }: { products: ProductResponse[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({

@@ -1,18 +1,32 @@
-import { clothyApi } from '../lib/axios';
+import { clothyApi } from '@/lib/axios';
 import type {
   CategoriesApiResponse,
-  CategoryQueryParams,
-  CategoryResponse,
-} from '../types/category.types';
+  CategoryApiResponse,
+  GetCategoriesParams,
+} from '@/types/category.types';
 
-export async function getCategories(
-  categoryQueryParams?: CategoryQueryParams
-): Promise<CategoryResponse[]> {
-  const response = await clothyApi.get<CategoriesApiResponse>('/products/categories', {
-    params: categoryQueryParams,
+export const getCategories = async (queryParams?: GetCategoriesParams) => {
+  const { data } = await clothyApi.get<CategoriesApiResponse>('/categories', {
+    params: queryParams,
   });
 
-  const categories = response.data.categories;
+  return data.categories;
+};
 
-  return categories;
-}
+export const addCategory = async (formData: FormData) => {
+  const { data } = await clothyApi.post<CategoryApiResponse>('/categories', formData);
+
+  return data;
+};
+
+export const modifyCategory = async (id: string, formData: FormData) => {
+  const { data } = await clothyApi.patch<CategoryApiResponse>(`/categories/${id}`, formData);
+
+  return data;
+};
+
+export const deleteCategory = async (id: string) => {
+  const { data } = await clothyApi.delete<CategoryApiResponse>(`/categories/${id}`);
+
+  return data;
+};

@@ -2,27 +2,21 @@ import { Filters } from '@/components/shop/Filters';
 import { Pagination } from '@/components/shop/Pagination';
 import ProductGrid from '@/components/shop/ProductGrid';
 import { ShopHeader } from '@/components/shop/ShopHeader';
-import useCategories from '@/hooks/useCategories';
-import useProducts from '@/hooks/useProducts';
-import type { HandlerFilterChangeNames, ProductQueryParams } from '@/types/shop.types';
+import useCategories from '@/hooks/category/useCategories';
+import useProducts from '@/hooks/product/useProducts';
+import type { HandlerFilterChangeNames } from '@/types/shop.types';
+import { getProductParamsFromUrl } from '@/utils/productParams';
 import { useSearchParams } from 'react-router-dom';
 
 const ShopPage = () => {
   //URL SEARCH PARAMS
   const [urlSearchParams, setUrlSearchParams] = useSearchParams();
 
-  const filters: ProductQueryParams = {
-    search: urlSearchParams.get('search') ?? '',
-    category: urlSearchParams.get('category') ?? '',
-    gender: urlSearchParams.get('gender') ?? '',
-    minPrice: Number(urlSearchParams.get('minPrice') ?? 0),
-    maxPrice: Number(urlSearchParams.get('maxPrice') ?? 150000),
-    sort: urlSearchParams.get('sort') ?? 'best-sellers',
-    page: Number(urlSearchParams.get('page') ?? 1),
-  };
+  const filters = getProductParamsFromUrl(urlSearchParams);
   const limit = 12;
+
   //ESTADO ASYNC DE PRODUCTOS
-  const { data: productData, isPending, isError } = useProducts(filters, { limit });
+  const { data: productData, isPending, isError } = useProducts({ ...filters, limit });
   //ESTADO ASYNC DE CATEGORIAS
   const { data: categoryData } = useCategories();
 
@@ -58,23 +52,29 @@ const ShopPage = () => {
     });
   };
 
-  //CONSTANTES
-
   return (
     <main className="mx-auto max-w-7xl px-8 py-10 lg:px-12">
       <ShopHeader
         onSortChange={handleFilterChange}
         sort={filters.sort}
         totalResults={productData?.totalResults ?? null}
+        categories={categoryData ?? null}
+        filters={filters}
+        onFilterChange={handleFilterChange}
+        onPricesChange={handlePricesChange}
       />
 
-      <section className="mt-10 grid grid-cols-[240px_minmax(0,1fr)] gap-8">
-        <Filters
-          categories={categoryData ?? null}
-          filters={filters}
-          onFilterChange={handleFilterChange}
-          onPricesChange={handlePricesChange}
-        />
+      <section className="mt-10 grid md:grid-cols-[240px_minmax(0,1fr)] gap-8">
+        <aside className="hidden md:block">
+          <h2 className="mb-6 text-lg font-semibold text-gray-900">Filtros</h2>
+
+          <Filters
+            categories={categoryData ?? null}
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            onPricesChange={handlePricesChange}
+          />
+        </aside>
 
         <ProductGrid
           products={productData?.products || []}

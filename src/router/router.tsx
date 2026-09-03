@@ -6,6 +6,13 @@ import HomePage from '../pages/HomePage';
 import ProfilePage from '../pages/ProfilePage';
 import MainLayout from '../layouts/MainLayout';
 import ShopPage from '@/pages/ShopPage';
+import { ProductDetailPage } from '@/pages/ProductDetailPage';
+import CartPage from '@/pages/CartPage';
+import AdminLayout from '@/layouts/AdminLayout';
+import AdminDashboardPage from '@/pages/admin/AdminDashboardPage';
+import AdminProductsPage from '@/pages/admin/AdminProductsPage';
+import AdminCategoriesPage from '@/pages/admin/AdminCategoriesPage';
+import AboutPage from '@/pages/AboutPage';
 
 export const router = createBrowserRouter([
   {
@@ -17,12 +24,24 @@ export const router = createBrowserRouter([
         index: true,
       },
       {
+        path: '/perfil',
+        element: <ProfilePage />,
+      },
+      {
         path: '/tienda',
         element: <ShopPage />,
       },
       {
-        path: '/profile',
-        element: <ProfilePage />,
+        path: '/tienda/:id',
+        element: <ProductDetailPage />,
+      },
+      {
+        path: '/carrito',
+        element: <CartPage />,
+      },
+      {
+        path: '/nosotros',
+        element: <AboutPage />,
       },
     ],
   },
@@ -33,5 +52,23 @@ export const router = createBrowserRouter([
   {
     path: '/register',
     element: <RegisterPage />,
+  },
+  {
+    path: '/admin',
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <AdminDashboardPage />,
+      },
+      {
+        path: 'products',
+        element: <AdminProductsPage />,
+      },
+      {
+        path: 'categories',
+        element: <AdminCategoriesPage />,
+      },
+    ],
   },
 ]);

@@ -1,13 +1,18 @@
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 interface PaginationProps {
-  currentPage: number;
+  currentPage?: number;
   totalResults: string | null;
   limit: number;
   onPageChange: (page: number) => void;
 }
 
-export function Pagination({ currentPage, totalResults, limit, onPageChange }: PaginationProps) {
+export function Pagination({
+  currentPage = 1,
+  totalResults,
+  limit,
+  onPageChange,
+}: PaginationProps) {
   const totalPages: number = Math.ceil(Number(totalResults) / limit);
 
   const isFirstPage = Number(currentPage) === 1;

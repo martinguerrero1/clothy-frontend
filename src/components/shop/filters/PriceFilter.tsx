@@ -1,15 +1,19 @@
-import type { priceSearchParam } from '@/types/shop.types';
 import * as Slider from '@radix-ui/react-slider';
 import { useState } from 'react';
 
+type priceParams = {
+  minPrice?: number;
+  maxPrice?: number;
+};
+
 export function PriceFilter({
-  priceSearchParam,
+  priceParams,
   onPricesChange,
 }: {
-  priceSearchParam: priceSearchParam;
+  priceParams: priceParams;
   onPricesChange: (values: [number, number]) => void;
 }) {
-  const { minPrice, maxPrice } = priceSearchParam;
+  const { minPrice = 0, maxPrice = 150000 } = priceParams;
 
   const [priceRange, setPriceRange] = useState<[number, number]>([minPrice, maxPrice]);
 
