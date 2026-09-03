@@ -1,6 +1,6 @@
 //USUARIO
 export type User = {
-  id: string;
+  _id: string;
   name: string;
   lastName: string;
   username: string;

@@ -12,6 +12,7 @@ import AdminLayout from '@/layouts/AdminLayout';
 import AdminDashboardPage from '@/pages/admin/AdminDashboardPage';
 import AdminProductsPage from '@/pages/admin/AdminProductsPage';
 import AdminCategoriesPage from '@/pages/admin/AdminCategoriesPage';
+import AboutPage from '@/pages/AboutPage';
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
         index: true,
       },
       {
-        path: '/profile',
+        path: '/perfil',
         element: <ProfilePage />,
       },
       {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: '/carrito',
         element: <CartPage />,
+      },
+      {
+        path: '/nosotros',
+        element: <AboutPage />,
       },
     ],
   },

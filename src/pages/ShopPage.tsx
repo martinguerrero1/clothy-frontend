@@ -58,15 +58,23 @@ const ShopPage = () => {
         onSortChange={handleFilterChange}
         sort={filters.sort}
         totalResults={productData?.totalResults ?? null}
+        categories={categoryData ?? null}
+        filters={filters}
+        onFilterChange={handleFilterChange}
+        onPricesChange={handlePricesChange}
       />
 
       <section className="mt-10 grid md:grid-cols-[240px_minmax(0,1fr)] gap-8">
-        <Filters
-          categories={categoryData ?? null}
-          filters={filters}
-          onFilterChange={handleFilterChange}
-          onPricesChange={handlePricesChange}
-        />
+        <aside className="hidden md:block">
+          <h2 className="mb-6 text-lg font-semibold text-gray-900">Filtros</h2>
+
+          <Filters
+            categories={categoryData ?? null}
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            onPricesChange={handlePricesChange}
+          />
+        </aside>
 
         <ProductGrid
           products={productData?.products || []}

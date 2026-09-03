@@ -20,10 +20,6 @@ export function Filters({
 }) {
   return (
     <aside className="w-full">
-      <div className="mb-6">
-        <h2 className="text-lg font-semibold text-gray-900">Filtros</h2>
-      </div>
-
       <div>
         <CategoryFilter
           categories={categories}
